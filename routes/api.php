@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TaskSaveController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,6 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('get-by-day/{day?}', [TaskSaveController::class, 'index'])->name('task.getbyday');
+Route::post('save-this-day', [TaskSaveController::class, 'store'])->name('task.save_all');

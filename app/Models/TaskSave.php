@@ -21,7 +21,8 @@ class TaskSave extends Model
         'description',
         'done',
         'end_at',
-        //'owner',
+        'user_id',
+        'created_at'
     ];
 
     /**
