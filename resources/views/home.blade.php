@@ -288,16 +288,17 @@
 
 
     $("#saver").on("click", event => {
-        console.log(Tasks)
+        console.log( JSON.stringify(Tasks))
         $.ajax({
-            data: Tasks,
-            dataType:'json',
             type: 'POST', // on précise la methode
             url: url_store, //l'url vers laquelle AJAX doit diriger la requette
+            data: JSON.stringify(Tasks),
+            dataType: "json",
+            contentType: "application/json; charset=utf-8",
             // async:false,
             // on success 
             success: function(response) { // si tout se passe bien NOTE: reponse contient la réponse obtenu de la requette
-                    console.log(response)
+                    alert(response.success)
                 },
             // on error
             error: function(response) { //sinon
