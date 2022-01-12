@@ -42,8 +42,16 @@ class TaskSaveController extends Controller
         //dd(count($request->all()));
         if(count($request->all()) != 0 ){
             foreach ($request->all() as $task) {
-                if(TaskSave::create($task)){
+                $taskStored = TaskSave::where('title', '=', $task['title'])
+                                        ->where('created_at', '=', $task['created_at'])
+                                        ->first();
+                if($taskStored){
+                    $taskStored->update($task);
                     $i++;
+                }else{
+                    if(TaskSave::create($task)){
+                        $i++;
+                    }
                 }
             }
             if($i == count($request->all())){

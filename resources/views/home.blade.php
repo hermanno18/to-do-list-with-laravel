@@ -151,6 +151,7 @@
     }
 
     function findForToday(){
+        Tasks = []
         $.ajax({
             type: 'GET', // on précise la methode
             url: url_get_today, //l'url vers laquelle AJAX doit diriger la requette
