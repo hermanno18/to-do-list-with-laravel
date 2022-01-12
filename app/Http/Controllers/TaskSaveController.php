@@ -41,7 +41,6 @@ class TaskSaveController extends Controller
         $i=0; $data = [];
         //dd(count($request->all()));
         if(count($request->all()) != 0 ){
-            dd($request->all());
             foreach ($request->all() as $task) {
                 if(TaskSave::create($task)){
                     $i++;

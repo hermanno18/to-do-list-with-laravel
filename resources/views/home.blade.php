@@ -116,9 +116,14 @@
         </div>
 
     </body>
+    <script>
+        
+    </script>
 <script>
     //Constantes globales à tout le JS :
+    @auth
     const user_id = {{ Auth::user()->id }} //
+    @endauth
     Tasks = [] // tableau de toutes les taches de la journée
     const url_get_today = "{{ route('task.getbyday') }}"
     const url_store = "{{ route('task.save_all') }}"
@@ -286,7 +291,7 @@
         console.log(Tasks)
         $.ajax({
             data: Tasks,
-
+            dataType:'json',
             type: 'POST', // on précise la methode
             url: url_store, //l'url vers laquelle AJAX doit diriger la requette
             // async:false,
